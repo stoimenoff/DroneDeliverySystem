@@ -6,7 +6,7 @@ public class Location2D implements Location {
 	private long y;
 	
 	public Location2D() {
-		this(0,0);
+		this(42,42);
 	}
 	
 	public Location2D(long x, long y) {
