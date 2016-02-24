@@ -56,7 +56,7 @@ public class WarehouseManager {
 		return warehouse.getLocation();
 	}
 	
-	public Location getDroneSpawnLocation() {
+	public Location getDefaultWarehouseLocation() {
 		return warehouse.getLocation();
 	}
 			

@@ -15,7 +15,7 @@ public class DroneManager {
 	private List<Drone> drones;
 
 	private DroneManager() {
-		Location initialLocation = WarehouseManager.getInstance().getDroneSpawnLocation(); 
+		Location initialLocation = WarehouseManager.getInstance().getDefaultWarehouseLocation(); 
 		drones = new ArrayList<Drone>();
 		for (int i = 0; i < INITIAL_NUMBER_OF_DRONES; i++) {
 			drones.add(new Drone(2000, 5, 500, initialLocation));
