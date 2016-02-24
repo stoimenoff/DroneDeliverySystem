@@ -3,6 +3,8 @@ package commons;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import location.Location;
+
 public class Request {
 	
 	private static int IDGenerator = 0; 
@@ -10,13 +12,15 @@ public class Request {
 	private final int id;
 	private final RequestType type;
 	private final long timestamp;
+	private final Location target;
 	
 	private Map<Product, Integer> contents;
 	
-	public Request(RequestType t, long time, Map<Product, Integer> conts) {
+	public Request(RequestType t, long time, Location tar, Map<Product, Integer> conts) {
 		id = IDGenerator += 1;
 		type = t;
 		timestamp = time;
+		target = tar;
 		contents = conts;
 	}
 	
@@ -43,6 +47,10 @@ public class Request {
 
 	public RequestType getType() {
 		return type;
+	}
+
+	public Location getTarget() {
+		return target;
 	}
 
 	public Map<Product, Integer> getContents() {

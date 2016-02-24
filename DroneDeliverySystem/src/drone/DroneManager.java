@@ -28,7 +28,7 @@ public class DroneManager {
 	
 	public void submitRequest(Request request) {
 		WarehouseManager.getInstance().getProducts(request.getContents());
-
+		
 	}
 	
 }
