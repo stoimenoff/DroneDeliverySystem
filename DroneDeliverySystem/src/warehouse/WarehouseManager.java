@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import commons.Product;
+import location.Location;
 
 public class WarehouseManager {
 	// Singleton pattern
@@ -49,6 +50,10 @@ public class WarehouseManager {
 			Integer quantity = suppliedProduct.getValue();
 			warehouse.get(product, quantity);
 		}
+	}
+	
+	public Location getNearestWarehouseLocation(Location l) {
+		return warehouse.getLocation();
 	}
 			
 }
