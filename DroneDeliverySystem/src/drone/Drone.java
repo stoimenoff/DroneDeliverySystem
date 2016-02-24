@@ -2,9 +2,9 @@ package drone;
 
 public class Drone {
 	
-	Drone() {
+	public Drone() {
 		
-		//this is a drone.
+		
 		
 	}
 	
