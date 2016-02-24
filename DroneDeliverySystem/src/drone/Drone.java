@@ -14,8 +14,7 @@ public class Drone {
 	private Location currentLocation;
 	private Date timeWhenAvailable;
 
-	public Drone(int bateryUnits, int chargingRate, int weightCapacity, Location currentLocation,
-			Calendar availableNow) {
+	public Drone(int bateryUnits, int chargingRate, int weightCapacity, Location currentLocation) {
 		this.bateryUnits = bateryUnits;
 		this.chargingRate = chargingRate;
 		this.weightCapacity = weightCapacity;
