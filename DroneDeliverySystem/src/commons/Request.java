@@ -1,6 +1,7 @@
 package commons;
 
 import java.util.Map;
+import java.util.Map.Entry;
 
 public class Request {
 	
@@ -17,6 +18,18 @@ public class Request {
 		type = t;
 		timestamp = time;
 		contents = conts;
+	}
+	
+	public int getWeight() {
+		int weight = 0;
+		int productWeight = 0;
+		int quantity = 0;
+		for(Entry<Product, Integer> productQuantityPair : contents.entrySet()) {
+			productWeight = productQuantityPair.getKey().getWeightPerQuantity();
+			quantity = productQuantityPair.getValue();
+			weight += productWeight * quantity;
+		}
+		return weight;
 	}
 	
 	//getters
