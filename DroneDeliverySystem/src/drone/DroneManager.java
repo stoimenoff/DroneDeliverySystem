@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import commons.Request;
+import location.Location;
 import warehouse.WarehouseManager;
 
 public class DroneManager {
@@ -14,9 +15,10 @@ public class DroneManager {
 	private List<Drone> drones;
 
 	private DroneManager() {
-		 drones = new ArrayList<Drone>();
-		 for (int i = 0; i < INITIAL_NUMBER_OF_DRONES; i++) {
-			drones.add(new Drone());
+		Location initialLocation = WarehouseManager.getInstance().getDroneSpawnLocation(); 
+		drones = new ArrayList<Drone>();
+		for (int i = 0; i < INITIAL_NUMBER_OF_DRONES; i++) {
+			drones.add(new Drone(2000, 5, 500, initialLocation));
 		}
 	}
 
@@ -26,7 +28,7 @@ public class DroneManager {
 	
 	public void submitRequest(Request request) {
 		WarehouseManager.getInstance().getProducts(request.getContents());
-		
+
 	}
 	
 }

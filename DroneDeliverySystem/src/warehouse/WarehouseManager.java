@@ -55,5 +55,9 @@ public class WarehouseManager {
 	public Location getNearestWarehouseLocation(Location l) {
 		return warehouse.getLocation();
 	}
+	
+	public Location getDroneSpawnLocation() {
+		return warehouse.getLocation();
+	}
 			
 }
