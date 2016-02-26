@@ -19,14 +19,14 @@ public class Drone {
 	private Location currentLocation;
 	private Date timeWhenAvailable;
 
-	public Drone(int bateryUnits, int chargingRate, int weightCapacity, Location currentLocation) {
+	public Drone(double batteryUnits, int chargingRate, int weightCapacity, Location currentLocation) {
 		IDGenerator += 1;
 		this.id = IDGenerator;
-		this.batteryUnits = bateryUnits;
+		this.batteryUnits = batteryUnits;
 		this.chargingRate = chargingRate;
 		this.weightCapacity = weightCapacity;
 		timeWhenAvailable = Calendar.getInstance().getTime();
-		currentBattery = bateryUnits;
+		currentBattery = batteryUnits;
 	}
 
 	public Date makeDelivery(Location warehouseLocation, Request request, Location deliveryLocation, Date startTime) {
