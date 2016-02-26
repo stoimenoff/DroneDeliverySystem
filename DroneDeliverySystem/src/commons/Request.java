@@ -5,9 +5,7 @@ import java.util.Map.Entry;
 
 import location.Location;
 
-public class Request {
-	
-	private static int IDGenerator = 0; 
+public class Request { 
 	
 	private final int id;
 	private final RequestType type;
@@ -16,8 +14,8 @@ public class Request {
 	
 	private Map<Product, Integer> contents;
 	
-	public Request(RequestType t, long time, Location tar, Map<Product, Integer> conts) {
-		id = IDGenerator += 1;
+	public Request(int id, RequestType t, long time, Location tar, Map<Product, Integer> conts) {
+		this.id = id;
 		type = t;
 		timestamp = time;
 		target = tar;
