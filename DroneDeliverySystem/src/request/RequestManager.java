@@ -39,6 +39,7 @@ public class RequestManager {
 		for (int i = 0; i < size; i++) {
 			deliver(waitingForSupply.remove(0));
 		}
+		System.out.println("Supply request is completed.");
 	}
 
 	private void deliver(Request request) {
@@ -47,6 +48,7 @@ public class RequestManager {
 		} else {
 			waitingForSupply.add(request);
 		}
+		System.out.println("Delivery request is completed.");
 	}
 
 }
