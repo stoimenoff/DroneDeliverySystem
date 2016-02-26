@@ -18,4 +18,15 @@ public class Product {
 		return name;
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		Product other = null;
+		if (obj instanceof  Product) {
+			other = (Product) obj;
+		} else {
+			return false;
+		}
+		return name.equals(other.getName());
+	}
+	
 }

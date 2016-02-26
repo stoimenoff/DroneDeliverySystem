@@ -32,6 +32,10 @@ public class Request {
 		return weight;
 	}
 	
+	public int getNumberOfProducts() {
+		return this.contents.size();
+	}
+	
 	//getters
 	public int getId() {
 		return id;
