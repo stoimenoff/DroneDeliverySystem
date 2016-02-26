@@ -67,11 +67,8 @@ public class Drone {
 	 */
 
 	private double getDistance(Location warehouseLocation, Location deliveryLocation) {
-		Location nearestWarehouseLocation = WarehouseManager.getInstance()
-				.getNearestWarehouseLocation(deliveryLocation);
 		double distance = currentLocation.getDistance(warehouseLocation);
 		distance += warehouseLocation.getDistance(deliveryLocation);
-		distance += deliveryLocation.getDistance(nearestWarehouseLocation);
 		return distance;
 	}
 
