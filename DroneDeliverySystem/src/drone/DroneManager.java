@@ -33,7 +33,7 @@ public class DroneManager {
 		int requestWeight = request.getWeight();
 		Location warehouseLocation = WarehouseManager.getInstance().getDefaultWarehouseLocation();
 		Location deliveryLocation = request.getTarget();
-		Date startTime = new Date(request.getTimestamp());
+		Date startTime = new Date(System.currentTimeMillis());
 		
 		Drone fastestDrone = null;
 		Date fastestTime = null;

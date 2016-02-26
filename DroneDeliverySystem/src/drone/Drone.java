@@ -30,7 +30,7 @@ public class Drone {
 	public Date makeDelivery(Location warehouseLocation, Location deliveryLocation, Date startTime) {
 		long estimatedDeliveryTime = Math.max(timeWhenAvailable.getTime(), startTime.getTime());
 		double distance = getDistance(warehouseLocation, deliveryLocation);
-
+		
 		if (distance > currentBatery) {
 			estimatedDeliveryTime += ((distance - currentBatery) * chargingRate * 60000);
 			currentBatery = 0;
