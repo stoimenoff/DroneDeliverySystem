@@ -9,15 +9,13 @@ public class Request {
 	
 	private final int id;
 	private final RequestType type;
-	private final long timestamp;
 	private final Location target;
 	
 	private Map<Product, Integer> contents;
 	
-	public Request(int id, RequestType t, long time, Location tar, Map<Product, Integer> conts) {
+	public Request(int id, RequestType t, Location tar, Map<Product, Integer> conts) {
 		this.id = id;
 		type = t;
-		timestamp = time;
 		target = tar;
 		contents = conts;
 	}
@@ -34,13 +32,13 @@ public class Request {
 		return weight;
 	}
 	
+	public int getNumberOfProducts() {
+		return this.contents.size();
+	}
+	
 	//getters
 	public int getId() {
 		return id;
-	}
-
-	public long getTimestamp() {
-		return timestamp;
 	}
 
 	public RequestType getType() {
