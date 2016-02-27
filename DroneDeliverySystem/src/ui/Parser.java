@@ -29,7 +29,6 @@ public final class Parser {
 	}
 
 	public static Request parse(String request) {
-
 		ArrayList<String> reqString = new ArrayList<>();
 		Collections.addAll(reqString, request.split(" "));
 

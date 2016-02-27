@@ -28,7 +28,6 @@ public class DroneManager {
 		Logger.getInstance().log("Drone manager accepted the request.", request);
 		WarehouseManager.getInstance().getProducts(request.getContents());
 
-		int requestWeight = request.getWeight();
 		Location warehouseLocation = WarehouseManager.getInstance().getDefaultWarehouseLocation();
 		Location deliveryLocation = request.getTarget();
 		Date startTime = new Date(System.currentTimeMillis());
@@ -37,16 +36,16 @@ public class DroneManager {
 		Date fastestTime = null;
 		Date currentTime = null;
 		for (Drone currentDrone : drones) {
-			if (currentDrone.getWeightCapacity() >= requestWeight) {
-				currentTime = currentDrone.estimateDeliveryTime(warehouseLocation, request, deliveryLocation,
-						startTime);
+			currentTime = currentDrone.estimateDeliveryTime(warehouseLocation, request, deliveryLocation, startTime);
+			if (currentTime != null) {
 				if (fastestTime == null || fastestTime.compareTo(currentTime) == 1) {
 					fastestTime = currentTime;
 					fastestDrone = currentDrone;
 				}
 			}
+
 		}
-		
+
 		if (fastestDrone != null) {
 			Logger.getInstance().log("Drone manager sending drone.", request, startTime);
 			Date deliveryTime = fastestDrone.makeDelivery(warehouseLocation, request, deliveryLocation, startTime);
