@@ -6,6 +6,7 @@ import java.util.List;
 
 import commons.Request;
 import location.Location;
+import logger.Logger;
 import warehouse.WarehouseManager;
 
 public class DroneManager {
@@ -24,6 +25,7 @@ public class DroneManager {
 	}
 
 	public void submitRequest(Request request) {
+		Logger.getInstance().log("Drone manager accepted the request.", request);
 		WarehouseManager.getInstance().getProducts(request.getContents());
 
 		int requestWeight = request.getWeight();
@@ -44,7 +46,15 @@ public class DroneManager {
 				}
 			}
 		}
-		fastestDrone.makeDelivery(warehouseLocation, request, deliveryLocation, startTime);
+		
+		if (fastestDrone != null) {
+			Logger.getInstance().log("Drone manager sending drone.", request, startTime);
+			Date deliveryTime = fastestDrone.makeDelivery(warehouseLocation, request, deliveryLocation, startTime);
+			Logger.getInstance().log("Drone delivered the request.", request, deliveryTime);
+		} else {
+			Logger.getInstance().log("Drone manager could not send drone.", request, startTime);
+		}
+
 	}
 
 	public void addDrone(double batteryUnits, int chargingRate, int weightCapacity) {

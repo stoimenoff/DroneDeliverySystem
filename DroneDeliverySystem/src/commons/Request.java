@@ -51,7 +51,7 @@ public class Request {
 		for (Entry<Product, Integer> productQuantityPair : contents.entrySet()) {
 			name = productQuantityPair.getKey().getName();
 			quantity = productQuantityPair.getValue();
-			result.append(name + ": " + quantity + "\n");
+			result.append("\t" + name + ": " + quantity + "\n");
 		}
 		return result.toString();
 	}

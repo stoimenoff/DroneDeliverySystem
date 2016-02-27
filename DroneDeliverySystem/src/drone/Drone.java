@@ -27,6 +27,7 @@ public class Drone {
 		this.weightCapacity = weightCapacity;
 		timeWhenAvailable = Calendar.getInstance().getTime();
 		currentBattery = batteryUnits;
+		this.currentLocation = currentLocation;
 	}
 
 	public Date makeDelivery(Location warehouseLocation, Request request, Location deliveryLocation, Date startTime) {

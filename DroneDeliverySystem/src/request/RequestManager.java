@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import commons.Request;
+import drone.DroneManager;
+import logger.Logger;
 import warehouse.WarehouseManager;
 
 public class RequestManager {
@@ -22,6 +24,7 @@ public class RequestManager {
 	}
 
 	public void submitRequest(Request request) {
+		Logger.getInstance().log("Request manager accepted the request.", request);
 		switch (request.getType()) {
 		case Supply:
 			supply(request);
@@ -34,21 +37,25 @@ public class RequestManager {
 
 	private void supply(Request request) {
 		WarehouseManager.getInstance().supplyProducts(request.getContents());
+		Logger.getInstance().log("Send supplies to Warehouse manager.", request);
 		//try to deliver waiting
 		int size = waitingForSupply.size();
+		Request waiting;
 		for (int i = 0; i < size; i++) {
-			deliver(waitingForSupply.remove(0));
+			waiting = waitingForSupply.remove(0);
+			Logger.getInstance().log("Supply came, trying to deliver the request.", waiting);
+			deliver(waiting);
 		}
-		System.out.println("Supply request is completed.");
 	}
 
 	private void deliver(Request request) {
 		if (WarehouseManager.getInstance().areProductsAvailable(request.getContents())) {
-			//TODO send request to drone manager
+			Logger.getInstance().log("Sending the request to Drone manager.", request);
+			DroneManager.getInstance().submitRequest(request);
 		} else {
+			Logger.getInstance().log("Request waiting for supply.", request);
 			waitingForSupply.add(request);
 		}
-		System.out.println("Delivery request is completed.");
 	}
 
 }

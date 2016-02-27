@@ -29,4 +29,9 @@ public class Product {
 		return name.equals(other.getName());
 	}
 	
+	@Override
+	public int hashCode() {
+		return name.hashCode();
+	}
+	
 }
