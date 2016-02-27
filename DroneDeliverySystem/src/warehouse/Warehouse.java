@@ -14,6 +14,7 @@ public class Warehouse {
 	private final int id;
 	private final Location location;
 	private Map<Product, Integer> products;
+	private Map<String, Product> names;
 	
 	public Warehouse(Location location) {
 		this.id = IDGenerator += 1;
@@ -31,6 +32,7 @@ public class Warehouse {
 			currentAvailable = products.get(product);
 		}
 		products.put(product, currentAvailable + quantity);
+		names.put(product.getName(), product);
 	}
 
 	public void get(Product product, Integer quantity) {
@@ -55,6 +57,13 @@ public class Warehouse {
 
 	public Location getLocation() {
 		return location;
+	}
+	
+	public Product getProductInfo(String name) {
+		if (names.containsKey(name)) {
+			return names.get(name);
+		}
+		return null;
 	}
 	
 }

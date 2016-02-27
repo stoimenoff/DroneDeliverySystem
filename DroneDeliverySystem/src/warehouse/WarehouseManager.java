@@ -59,5 +59,14 @@ public class WarehouseManager {
 	public Location getDefaultWarehouseLocation() {
 		return warehouse.getLocation();
 	}
+	
+	public int getProductWeight(String name) {
+		Product product = warehouse.getProductInfo(name);
+		if (product != null) {
+			return product.getWeightPerQuantity();
+		} else {
+			throw new IllegalArgumentException("No product with such name");
+		}
+	}
 			
 }

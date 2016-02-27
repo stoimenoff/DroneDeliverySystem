@@ -54,8 +54,16 @@ public final class Parser {
 		}
 		
 		Map<Product, Integer> contents = new HashMap<>();
+		String name;
+		int weightPerQuantity;
 		while (!reqString.isEmpty()) {
-			Product product = new Product(reqString.remove(0), Integer.getInteger(reqString.remove(0)));
+			name = reqString.remove(0);
+			if (type.equals(RequestType.Delivery)) {
+				weightPerQuantity = WarehouseManager.getInstance().getProductWeight(name);
+			} else {
+				weightPerQuantity = Integer.getInteger(reqString.remove(0));
+			}
+			Product product = new Product(name, weightPerQuantity);
 			contents.put(product, Integer.getInteger(reqString.remove(0)));
 		}
 		
