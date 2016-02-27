@@ -25,7 +25,12 @@ public class Location2D implements Location {
 			throw new IllegalArgumentException("Different location implementations...");
 		}
 	}
-
+	
+	@Override
+	public String toString() {
+		return "(" + x + ", " + y + ")";
+	}
+	
 	public long getX() {
 		return x;
 	}

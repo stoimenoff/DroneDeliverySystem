@@ -36,6 +36,26 @@ public class Request {
 		return this.contents.size();
 	}
 	
+	@Override
+	public String toString() {
+		StringBuilder result = new StringBuilder();
+		result.append("|Request|\n");
+		result.append("ID: " + id + "\n");
+		result.append("Type: " + type + "\n");
+		if (type.equals(RequestType.Delivery)) {
+			result.append("Delivery location: " + target.toString() + "\n");
+		}
+		result.append("Products: \n");
+		String name;
+		int quantity;
+		for (Entry<Product, Integer> productQuantityPair : contents.entrySet()) {
+			name = productQuantityPair.getKey().getName();
+			quantity = productQuantityPair.getValue();
+			result.append(name + ": " + quantity + "\n");
+		}
+		return result.toString();
+	}
+	
 	//getters
 	public int getId() {
 		return id;

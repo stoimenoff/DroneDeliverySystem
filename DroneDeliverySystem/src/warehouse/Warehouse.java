@@ -20,6 +20,7 @@ public class Warehouse {
 		this.id = IDGenerator += 1;
 		this.location = location;
 		this.products = new HashMap<>();
+		this.names = new HashMap<>();
 	}
 	
 	public Warehouse() {

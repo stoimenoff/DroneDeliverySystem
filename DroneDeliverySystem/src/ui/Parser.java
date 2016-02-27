@@ -40,7 +40,8 @@ public final class Parser {
 		} else {
 			type = RequestType.Delivery;
 		}
-		int id = Integer.getInteger(reqString.remove(0));
+		
+		int id = Integer.parseInt(reqString.remove(0));
 		//remove date and time
 		reqString.remove(0);
 		reqString.remove(0);
@@ -50,7 +51,7 @@ public final class Parser {
 		if (type.equals(RequestType.Delivery)) {
 			ArrayList<String> coords = new ArrayList<>();
 			Collections.addAll(coords, reqString.remove(0).split(","));
-			loc = new Location2D(Integer.getInteger(coords.remove(0)), Integer.getInteger(coords.remove(0))); 
+			loc = new Location2D(Integer.parseInt(coords.remove(0)), Integer.parseInt(coords.remove(0))); 
 		}
 		
 		Map<Product, Integer> contents = new HashMap<>();
@@ -61,10 +62,10 @@ public final class Parser {
 			if (type.equals(RequestType.Delivery)) {
 				weightPerQuantity = WarehouseManager.getInstance().getProductWeight(name);
 			} else {
-				weightPerQuantity = Integer.getInteger(reqString.remove(0));
+				weightPerQuantity = Integer.parseInt(reqString.remove(0));
 			}
 			Product product = new Product(name, weightPerQuantity);
-			contents.put(product, Integer.getInteger(reqString.remove(0)));
+			contents.put(product, Integer.parseInt(reqString.remove(0)));
 		}
 		
 		return new Request(id, type, loc, contents);
