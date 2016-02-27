@@ -49,7 +49,7 @@ public class Drone {
 			return null;
 		}
 		
-		double batteryLeft = deliveryDistance + returnDistance - currentBattery - deltaBattery;
+		double batteryLeft = currentBattery + deltaBattery - deliveryDistance - returnDistance;
 		if (batteryLeft < 0) {
 			estimatedDeliveryTime += (-batteryLeft * chargingRate * 60000);
 			currentBattery = 0;
