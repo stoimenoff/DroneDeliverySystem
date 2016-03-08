@@ -59,6 +59,8 @@ public class Drone {
 		currentLocation = nearestWarehouse;
 		
 		estimatedDeliveryTime += (deliveryDistance * 60000);
+		long returnTime = (long) (estimatedDeliveryTime + returnDistance * 60000);
+		timeWhenAvailable = new Date(returnTime);
 
 		return new Date(estimatedDeliveryTime);
 	}
